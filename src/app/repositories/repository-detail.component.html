@@ -1,0 +1,39 @@
+<div class='panel panel-primary' *ngIf='repository'>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle + ': ' + repository.name}}
+    </div>
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-6'>Nome:</div>
+                    <div class='col-md-6'>{{ repository.name }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-6'>Descrição</div>
+                    <div class='col-md-6'>{{ repository.description }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-6'>Número de estrelas:</div>
+                    <div class='col-md-6'>{{ repository.stargazers_count }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-6'>Linguagem:</div>
+                    <div class='col-md-6'>{{ repository.language }}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-6'>
+                        <a [href]="repository.owner.html_url" target="_blank">Github</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+    </div>
+</div>

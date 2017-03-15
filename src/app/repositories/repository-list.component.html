@@ -1,0 +1,38 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>{{pageTitle}}</div>
+
+    <div class='panel-body'>
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+
+        <div class='table-responsive'>
+            <table class='table' *ngIf='repositories && repositories.length'>
+                <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Descrição</th>
+                      <th>Número de estrelas</th>
+                      <th>Linguagem</th>
+                      <th>Github</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let repository of repositories | repositoryOrderDesc'>
+                        <td><a [routerLink]="['/repos', repository.owner.login, repository.name]">{{ repository.name }}</a></td>
+                        <td>{{ repository.description }}</td>
+                        <td>{{ repository.stargazers_count }}</td>
+                        <td>{{ repository.language}}</td>
+                        <td>
+                            <a [href]="repository.owner.html_url" target="_blank">Perfil</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+    </div>
+</div>
