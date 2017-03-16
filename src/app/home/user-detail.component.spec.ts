@@ -1,6 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { TestBed, ComponentFixture, async, inject } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { Observable } from 'rxjs/Rx';
@@ -52,5 +52,15 @@ describe('UserDetailComponent', () => {
     htmlElement = textDebugElement.nativeElement as HTMLElement;
     expect(htmlElement.innerText).toEqual('Back');
   }));
+
+  it('should display the page title correctly', () => {
+    userDetailComponentFixture.detectChanges();
+    textDebugElement = userDetailComponentFixture.debugElement.query(By.css('div.panel-heading'));
+    htmlElement = textDebugElement.nativeElement as HTMLElement;
+
+    const pageTitle = `${userDetailComponent.pageTitle}: ${userDetailComponent.user.name}`;
+
+    expect(htmlElement.innerText).toEqual(pageTitle);
+  });
 
 });
