@@ -1,0 +1,41 @@
+<div class='panel panel-primary' *ngIf='user'>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle + ': ' + user.name}}
+    </div>
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                <div class='row'>
+                    <div class='col-md-6'>Número de seguidores:</div>
+                    <div class='col-md-6'>{{user.followers}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-6'>Número de seguidores:</div>
+                    <div class='col-md-6'>{{user.following}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-6'>Avatar:</div>
+                    <img class='center-block img-responsive'
+                      [src]='user.avatar_url'
+                      [title]='user.name'
+                      style="width:50px; margin:2px;">
+                </div>
+                <div class='row'>
+                    <div class='col-md-6'>E-mail:</div>
+                    <div class='col-md-6'>{{user.email}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-6'>Bio:</div>
+                    <div class='col-md-6'>{{user.bio}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class='panel panel-primary'>
+    <div class='panel-heading'>{{pageTitle}}</div>
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>Buscar por:</div>
+            <div class='col-md-4'>
+                <input class="form-control" type='text' [(ngModel)]='userListFilter' />
+            </div>
+        </div>
+
+        <hr />
+
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+
+        <div class='table-responsive'>
+            <table class='table' *ngIf='users && users.length'>
+                <thead>
+                    <tr>
+                      <th>Nome</th>
+                      <th>Repositórios</th>
+                      <th>Avatar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let user of users | userFilter:userListFilter'>
+                      <td><a [routerLink]="['/', user.login]">{{ user.login }}</a></td>
+                      <td><a [routerLink]="['/repos', user.login]">Repositorios</a></td>
+                      <td><img class="user-image" [src]='user.avatar_url' [title]='user.login'></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
