@@ -5,8 +5,7 @@ import { IUser } from './user';
 @Component({
   moduleId: module.id,
   templateUrl: 'user-search.component.html',
-  styleUrls: [ 'user-search.component.css' ],
-  providers: [ UserService ]
+  styleUrls: [ 'user-search.component.css' ]
 })
 export class UserSearchComponent implements OnInit {
   pageTitle: string;
