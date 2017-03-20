@@ -47,4 +47,10 @@ describe('UserSearchComponent', () => {
       expect(userSearchComponent.users).toEqual(users);
     });
   }));
+
+  it('should search the user by name', async(() => {
+    userSearchComponent.searchUsers(users[0].login);
+
+    expect(userSearchComponent.users).toEqual(users[0]);
+  }));
 });

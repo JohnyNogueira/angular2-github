@@ -13,4 +13,9 @@ export class MockUserService {
   public getUser(): Observable<IUser> {
     return Observable.of(users[0]);
   }
+
+  public searchUsers(searchTerm: string): Observable<IUser> {
+    return Observable.from(users)
+      .filter((user: IUser) => user.login === searchTerm);
+  }
 }
