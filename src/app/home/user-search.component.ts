@@ -22,7 +22,7 @@ export class UserSearchComponent implements OnInit {
     this._userService.getUsers()
       .subscribe(
         users => this.users = users,
-        error => this.errorMessage = <any>error
+        error => this.errorMessage = <string>error
       );
   }
 }
