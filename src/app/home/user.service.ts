@@ -11,19 +11,26 @@ import { IUser } from './user';
 @Injectable()
 export class UserService {
   private _userUrl = 'https://api.github.com/users';
+  private _searchUsersUrl = 'https://api.github.com/search/users?q=';
 
   constructor(private _http: Http) { }
 
   getUsers(): Observable<IUser[]> {
-      return this._http.get(this._userUrl)
-        .map((response: Response) => <IUser[]> response.json())
-        .catch(this.handleError);
+    return this._http.get(this._userUrl)
+      .map((response: Response) => <IUser[]> response.json())
+      .catch(this.handleError);
   }
 
   getUser(username: string): Observable<IUser> {
-      return this._http.get(`${this._userUrl}/${username}`)
-        .map((response: Response) => <IUser> response.json())
-        .catch(this.handleError);
+    return this._http.get(`${this._userUrl}/${username}`)
+      .map((response: Response) => <IUser> response.json())
+      .catch(this.handleError);
+  }
+
+  searchUsers(searchTerm: string): Observable<IUser[]> {
+    return this._http.get(`${this._searchUsersUrl}${searchTerm}`)
+      .map((response: Response) => <IUser[]> response.json().items)
+      .catch(this.handleError);
   }
 
   private handleError(error: Response) {

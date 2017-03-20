@@ -25,4 +25,12 @@ export class UserSearchComponent implements OnInit {
         error => this.errorMessage = <string>error
       );
   }
+
+  searchUsers(searchTerm: string) {
+    this._userService.searchUsers(searchTerm)
+      .subscribe(
+        users => this.users = users,
+        error => this.errorMessage = <string>error
+      );
+  }
 }
